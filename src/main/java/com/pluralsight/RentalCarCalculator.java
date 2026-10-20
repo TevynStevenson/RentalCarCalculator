@@ -19,10 +19,10 @@ public class RentalCarCalculator {
 
 
         // Ask user for electric toll tag $3.95
-         System.out.println("Would You Like A Toll Tag? Extra $3.95/day");
+        System.out.println("Would You Like A Toll Tag? Extra $3.95/day");
         String tollTag = rentalCar.nextLine();
 
-         // Ask user whether they want GPS at $2.95/day
+        // Ask user whether they want GPS at $2.95/day
         System.out.println("Would You Like GPS? Extra $2.95/day");
         String gps = rentalCar.nextLine();
 
@@ -44,42 +44,48 @@ public class RentalCarCalculator {
         double gpS = 0.0;
         double roadsideAssistance = 0.0;
         double underageSurcharge = 0.0;
+        double optionsCost;
         double total;
 
         // Initialize totals
         double rentalPrice = totalDays * basicRental;
 
+
         // Add if statements
-        if(tollTag.equals("Yes")){
+        if (tollTag.equals("Yes")) {
             electronicToll = 3.95 * totalDays;
-        } else if (tollTag.equals("No")){
+        } else if (tollTag.equals("No")) {
             electronicToll = 0.0;
         }
-            if (gps.equals("Yes")){
+        if (gps.equals("Yes")) {
             gpS = 2.95 * totalDays;
-        } else if (gps.equals("No")){
-                gpS = 0.0;
-            }
-                if (roadSide.equals("Yes")){
+        } else if (gps.equals("No")) {
+            gpS = 0.0;
+        }
+        if (roadSide.equals("Yes")) {
             roadsideAssistance = 3.95 * totalDays;
-        } else if (roadSide.equals("No")){
-                    roadsideAssistance = 0.0;
-                }
-                    if(age < 25){
+        } else if (roadSide.equals("No")) {
+            roadsideAssistance = 0.0;
+        }
+        if (age < 25) {
             underageSurcharge = (basicRental * .30) * totalDays;
-        } else if (age >25){
+        } else if (age > 25) {
             underageSurcharge = 0.0;
-                    }
+        }
 
 
         //Calculate The Total %n----next line, %.2f---- 2 decimals in float
-        total =  (totalDays * basicRental) + gpS + electronicToll + roadsideAssistance + underageSurcharge;
-                    System.out.printf("Total: $%.2f%n", total);
+        total = (totalDays * basicRental) + gpS + electronicToll + roadsideAssistance + underageSurcharge;
+        optionsCost = totalDays * (gpS + electronicToll + roadsideAssistance + underageSurcharge);
 
-
-
-        }
+        System.out.printf("Basic Car Rental: $%.2f%n", basicRental);
+        System.out.printf("Options Cost: $%.2f%n", optionsCost);
+        System.out.printf("Underage Surcharge: $%.2f%n", underageSurcharge);
+        System.out.printf("Total: $%.2f%n", total);
 
 
     }
+
+
+}
 
